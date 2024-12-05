@@ -18,7 +18,7 @@ class Hotel extends Authenticatable
         'name',
         'email',
         'password',
-         
+         "slug",
         'phone', 
         'useractive',
     ];

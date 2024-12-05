@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { apilink } from "../../common";
 
-export const getfarequote=createAsyncThunk("/farequote",async({EndUserIp="0.0.0.0",TraceId,ResultIndex})=>{
+export const getfarequote=createAsyncThunk("/farequote",async({TraceId,ResultIndex,EndUserIp="0.0.0.0"})=>{
 const res=await axios.post(`${apilink}/farequate`,{EndUserIp,TraceId,ResultIndex})
 
 return res.data;

@@ -54,8 +54,7 @@ class FlightController extends Controller
                     "FlightCabinClass" => $validatedData['FlightCabinClass'],
                     "PreferredDepartureTime" => $validatedData['PreferredDepartureTime'],
                     "PreferredArrivalTime" => $validatedData['PreferredDepartureTime']
-                    // "PreferredDepartureTime" =>$validatedData['PreferredDepartureTime'],
-                    // "PreferredArrivalTime" =>$validatedData['PreferredDepartureTime']
+                    
                 ]
             ],
             "Sources" => null
@@ -74,7 +73,7 @@ class FlightController extends Controller
             $response = Http::timeout(90)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search', $searchPayload);
         }
 
-        return $response;
+        return     $response;
     }
 
 
@@ -235,6 +234,35 @@ class FlightController extends Controller
     }
 
 
+    function fareRules(Request  $request)
+    {
+        $token = $this->apiService->getToken();
+
+        $validatedData = $request->validate([
+            "EndUserIp" => "required",
+            "TraceId" => "required|string",
+            "ResultIndex" => "required|string"
+
+        ]);
+        $validatedData["TokenId"] = $token;
+        $response;
+        $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule', $validatedData);
+        if ($response->json('Response.Error.ErrorCode') === 6) {
+
+            $token = $this->apiService->authenticate();
+
+
+            $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule', $validatedData);
+        }
+        return $response;
+    }
+
+
+
+
+
+
+
     function ssrrequest(Request $request)
     {
         $token = $this->apiService->getToken();
@@ -262,7 +290,7 @@ class FlightController extends Controller
 
             $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SSR', $searchpayload);
         }
-        return $searchpayload;
+        return $response;
     }
 
 
@@ -279,13 +307,13 @@ class FlightController extends Controller
         ]);
         $validatedData["TokenId"] = $token;
         $response;
-        $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SSR', $validatedData);
+        $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareQuote', $validatedData);
         if ($response->json('Response.Error.ErrorCode') === 6) {
 
             $token = $this->apiService->authenticate();
 
 
-            $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SSR', $validatedData);
+            $response = Http::timeout(100)->withHeaders([])->post('http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareQuote', $validatedData);
         }
         return $response;
     }

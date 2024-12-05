@@ -5,7 +5,7 @@ import { apilink } from "../../common";
 
 export const getseeingApi=createAsyncThunk("/getseeing",async({EndUserIp,ResultIndex,TraceId
 })=>{
-console.log(EndUserIp,ResultIndex,TraceId)
+
 const res=await axios.post(`${apilink}/sightseeing/get`,{EndUserIp,ResultIndex,TraceId})
 
 return res.data;

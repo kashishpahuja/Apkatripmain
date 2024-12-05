@@ -117,9 +117,9 @@ const AutoSearch = ({ value, onSelect, Click, fromCity }) => {
           const res = await axios.get(
             `https://port-api.com/airport/search/${debouncedValue}`
           );
-          console.log(pathname.includes())
+          
 
-          console.log(res)
+         
           setAirports(res.data.features); // Assuming API returns "features" array
         } catch (error) {
           console.error("Error fetching airports:", error);
@@ -140,7 +140,7 @@ const AutoSearch = ({ value, onSelect, Click, fromCity }) => {
 
 
   const handleInputChange = (e) => {
-    console.log(e.target.value)
+  
     setInputValue(e.target.value);
   };
 
@@ -152,7 +152,7 @@ const AutoSearch = ({ value, onSelect, Click, fromCity }) => {
 
   return (
     <div className="autosearch fromsectr" id="fromautoFill_in">
-      <div className="searcityCol flex gap-3 bg-white p-3 items-center">
+      <div className="searcityCol flex gap-3 bg-white p-3 items-center " >
         <img src="/Images/icon-search.svg" alt="Search" />
         <input
           id="a_FromSector_show"
@@ -163,12 +163,14 @@ const AutoSearch = ({ value, onSelect, Click, fromCity }) => {
           value={inputValue}
           autoFocus
           onChange={handleInputChange}
+
         />
       </div>
 
       <div
         id="fromautoFill"
         className="text-black overflow-hidden h-72 overflow-y-auto"
+        onMouseLeave={()=>Click(false)}
       >
         <div className="clr"></div>
         <div className="bg-[#ECF5FE] py-1 px-2 border-t border-[#ECECEC] text-sm font-semibold">

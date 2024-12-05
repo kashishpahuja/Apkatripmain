@@ -103,7 +103,7 @@ const TrainComp = () => {
         handleToClick(); // Add the appropriate handler for traveller
         break;
       default:
-        console.log("Unknown option:", option);
+        
     }
   };
 
@@ -124,12 +124,12 @@ const TrainComp = () => {
 
   const handleFromClick = () => {
     // Your logic for 'From' click
-    console.log("From clicked");
+    
   };
 
   const handleToClick = () => {
     // Your logic for 'To' click
-    console.log("To clicked");
+ 
   };
 
   return (

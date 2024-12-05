@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const page = () => {
   const [cityName, setCityName] = useState("")
-  console.log(cityName)
+
   
   return (
     <div>

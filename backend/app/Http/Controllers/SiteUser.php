@@ -11,28 +11,29 @@ class SiteUser extends Controller
 {
     //
 
-    public function signupUser(Request $request){
-   
-        $validate=$request->validate([
-       "name"=>"required",
-       "number"=>"required",
-       "password"=>"required|min:6"
+    public function signupUser(Request $request)
+    {
+
+        $validate = $request->validate([
+            "name" => "required",
+            "number" => "null",
+            "password" => "required|min:6"
         ]);
 
-$allreadyuser =apkatripuser::where("number",$validate["number"])->first();
+        $allreadyuser = apkatripuser::where("number", $validate["number"])->first();
 
-if($allreadyuser){
-    return response()->json(["message"=>"Number allready exist","success"=>false]);
-}
+        if ($allreadyuser) {
+            return response()->json(["message" => "Number allready exist", "success" => false]);
+        }
 
         // return $allreadyuser;
 
 
-$addUser= apkatripuser::create([
-"name"=>$validate["name"],
-"number"=>$validate["number"],
-"password"=>$validate["password"],
-]);
+        $addUser = apkatripuser::create([
+            "name" => $validate["name"],
+            "number" => $validate["number"],
+            "password" => $validate["password"],
+        ]);
 
 
 

@@ -59,6 +59,7 @@ class HoteldetailsResource extends Resource
                 ])
                 ->label('Hotel Rating')->required(),
             DatePicker::make('built_year')->label('Year Built')->required(),
+            TextInput::make('price')->label("Price")->required(),
             DatePicker::make('accepting_since')->label('Accepting Since')->required(),
             TextInput::make('email')->label('Email')->required(),
             TextInput::make('number')->label('Phone Number')->required(),

@@ -28,6 +28,8 @@ export default async function RootLayout({ children }) {
 
   const messages = await getMessages();
 
+  
+
 
 
   return (

@@ -301,7 +301,7 @@ export default function Page() {
   });
 
   const handleTypeChange = (option) => {
-    console.log(option);
+
     setSelectedType(option);
   };
 

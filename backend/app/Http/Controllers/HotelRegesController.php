@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hotel;
+use App\Models\hoteldetails;
+use App\Models\amenities;
+
+use App\Models\roomreg;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 
@@ -99,6 +104,9 @@ public function  sendVerify(Request $req){
 
     public function signupHotel(Request $req)
     {
+
+
+
         $validated = $req->validate([
             'name' => 'required|string|max:25',
             'phone' => 'required',
@@ -158,4 +166,38 @@ public function  sendVerify(Request $req){
             "info" => $userFind,
         ]);
     }
+
+
+
+public function getAllhotels(){
+
+$users=Hotel::all();
+$info=[];
+
+foreach($users as $user){
+ $singlehotel=hoteldetails::where("hotel_id",$user["id"])->first();
+//  $singleAmendment=amenities::where("hotel_id",$user["id"])->first();
+//  $rooms=roomreg::where("hotel_id",$user["id"])->get();
+ array_push($info,["hotel"=>$singlehotel,"user"=>$user]);
+
+}
+return $info;}
+
+
+
+
+
+public function getSingleHotellreq(string $slug){
+
+    $user=Hotel::where("slug",$slug)->first();
+    $hotel=hoteldetails::where("hotel_id",$user["id"])->first();
+   $amenities=amenities::where("hotel_id",$user["id"])->first();
+    $rooms=roomreg::where("hotel_id",$user["id"])->get();
+$data=["user"=>$user,"hotel"=>$hotel,"amenities"=>$amenities,"rooms"=>$rooms];
+return $data;
+
+}
+
+
+
 }

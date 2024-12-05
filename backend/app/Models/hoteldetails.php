@@ -32,6 +32,7 @@ class hoteldetails extends Model
         'state',
         'city',
         'terms',
+        "price",
         'hotel_id',
     ];
 

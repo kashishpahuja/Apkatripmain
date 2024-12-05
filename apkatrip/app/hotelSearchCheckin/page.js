@@ -103,7 +103,7 @@ const page = () => {
   });
 
   const toggleSection = (section) => {
-    console.log("HELLO", section);
+  
     setOpenSections(() => ({
       // Set the clicked section to true, and all others to false
       [section]: true,
@@ -246,7 +246,7 @@ const page = () => {
   };
 
   const closePopup = () => {
-    console.log("meee");
+  
     setIsOpenSecond(false);
   };
 

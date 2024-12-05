@@ -33,7 +33,7 @@ class HotelregPanelProvider extends PanelProvider
             ->id('hotelreg')
             ->path('hotelreg')
             ->login()
-            // ->registration()
+            ->registration()
             ->colors([
                 'danger' => Color::Red,
                 'gray' => Color::Slate,

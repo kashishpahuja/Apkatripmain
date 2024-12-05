@@ -42,6 +42,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('state');
             $table->string('city');
+            
             $table->text('terms');
             $table->unsignedBigInteger('hotel_id');  // Removed nullable, assuming it's mandatory
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');

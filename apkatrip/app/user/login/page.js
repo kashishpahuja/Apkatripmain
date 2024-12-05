@@ -2,7 +2,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { apilink } from "../Component/common";
+import { apilink } from "../../Component/common/index";
 // import { apilink } from '../../Component/common';
 import { useRouter } from "next/navigation";
 import { toast, Bounce } from "react-toastify";

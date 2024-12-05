@@ -13,7 +13,7 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const page = () => {
   const loadLiveStatusDateWise = (day, month, year) => {
-    console.log(`Date selected: ${day}/${month}/${year}`);
+
     // You can add your logic here to handle the date selection
   };
 
